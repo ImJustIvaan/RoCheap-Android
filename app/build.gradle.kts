@@ -6,20 +6,22 @@ plugins {
     kotlin("android")
 }
 
-val APP_VERSION_NAME : String by project
-val APP_VERSION_CODE : String by project
-val APP_ID : String by project
+// We removed all the 'val ... by project' variables here!
 
 android {
     compileSdk = libs.versions.compile.sdk.version.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.min.sdk.version.get().toInt()
-        namespace = APP_ID
-
-        applicationId = APP_ID
-        versionCode = APP_VERSION_CODE.toInt()
-        versionName = APP_VERSION_NAME
+        
+        // YOUR CUSTOM PACKAGE NAME
+        namespace = "com.imjustivaan.rocheap"
+        applicationId = "com.imjustivaan.rocheap"
+        
+        // YOUR CUSTOM APP VERSIONS (Starting at Version 1.0)
+        versionCode = 1
+        versionName = "1.0"
+        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -44,19 +46,6 @@ android {
         abortOnError = true
         disable.add("GradleDependency")
     }
-
-    // Use this block to configure different flavors
-//    flavorDimensions("version")
-//    productFlavors {
-//        create("full") {
-//            dimension = "version"
-//            applicationIdSuffix = ".full"
-//        }
-//        create("demo") {
-//            dimension = "version"
-//            applicationIdSuffix = ".demo"
-//        }
-//    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
